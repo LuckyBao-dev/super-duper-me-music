@@ -16,16 +16,112 @@ footer{text-align:center;padding:21px;color:#796b8e;font-size:.86rem}
 @media(max-width:870px){.downloads{grid-template-columns:1fr}.download-list{flex-direction:row}.download-list .btn{white-space:normal}}@media(max-width:730px){.site-header{padding:12px 16px}.intro{padding:45px 16px 48px}.intro h1{font-size:clamp(3.2rem,11vw,4.5rem)}.intro .gift-message{font-size:.95rem}main{padding:0 15px 45px}.player{grid-template-columns:1fr;padding:17px;gap:20px}.cover{max-width:260px;margin:0 auto}.track-meta{text-align:center}.controls{justify-content:center}.lyrics-body{height:290px}.playlist{grid-template-columns:1fr;gap:9px;margin-bottom:29px}.downloads,.panel{padding:22px 19px}.download-list{flex-direction:column}.print-row{gap:6px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 @media print{@page{margin:17mm}body{background:white!important;color:#111!important;font:11pt/1.5 Arial,sans-serif}.site-header,.intro,.play-area,.downloads,.contact,footer,.print-button{display:none!important}main{padding:0;max-width:none}.panel{box-shadow:none;border:0;background:white;padding:0;color:#111}.panel .license-lead,.panel .promise,.panel .legal-note,.panel .license-meta{color:#111}.panel .promise{background:white;border-left:3px solid #222}.print-row{display:block}}
+
+/* Compact listening station and one-click gift */
+main{max-width:1040px}
+.intro{padding:42px 18px 44px}
+.intro h1{font-size:clamp(2.9rem,7vw,4.9rem);margin:14px 0 12px}
+.intro .lead{margin-bottom:7px}.intro .gift-message{margin:10px auto 0;max-width:680px}
+.intro .assurances{margin:16px auto 17px}
+.section-heading{max-width:870px;margin:27px auto 12px;align-items:center}
+.section-heading h2{font-size:clamp(1.65rem,3.4vw,2.25rem);margin:0}
+.section-heading p{font-size:.88rem}
+.player{display:flex;flex-direction:column;gap:12px;max-width:870px;margin:auto;padding:19px 23px;border-radius:23px;box-shadow:0 11px 25px #27124d20}
+.player-top{display:flex;align-items:center;gap:16px}
+.cover{width:98px;height:98px;aspect-ratio:1;flex-shrink:0;border:3px solid #ffffff70;border-radius:14px;box-shadow:0 5px 12px #170a364d}
+.player-core{flex:1;min-width:0}
+.player-core .eyebrow{color:#ffe69c;font-size:.68rem;margin:0}
+.player-core h2{font-size:clamp(1.3rem,3vw,1.75rem);margin:0;line-height:1.12}
+.player-core .sub{font-size:.81rem;margin:0 0 2px}
+.audio{margin:7px 0 0;min-height:42px}
+.playlist{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0;gap:8px}
+.track{padding:8px 9px;gap:8px;background:#ffffff16;color:white;border:1px solid #ffffff3c;border-radius:12px;box-shadow:none}
+.track:hover{background:#ffffff28;border-color:#fce7ff}
+.track[aria-current="true"]{background:#ffffff29;border:2px solid #ffe28a;box-shadow:none}
+.track img{width:36px;height:36px;border-radius:7px}
+.track strong{font-size:.79rem;line-height:1.18}
+.track small{font-size:.65rem;color:#e6dcfa;margin-top:2px}
+.player-controls{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.player-controls .controls{margin:0;gap:8px}
+.player-controls .controls .btn{font-size:.76rem;min-height:32px;padding:6px 11px;box-shadow:none}
+.player-controls .controls label{font-size:.73rem}
+.player-controls .hint{font-size:.72rem;margin:0}
+.lyrics-panel{border-radius:13px}
+.lyrics-head{padding:9px 14px}
+.lyrics-body{height:165px;padding:11px 15px;font-size:.91rem;line-height:1.7}
+.lyrics-actions{display:flex;justify-content:flex-end;gap:18px;flex-wrap:wrap}
+.text-link{border:0;background:transparent;color:#ffe7a1;font-weight:900;font-size:.82rem;text-decoration:none;padding:4px 0;cursor:pointer}
+.text-link:hover{text-decoration:underline}
+.downloads{display:flex;flex-direction:column;align-items:center;gap:0;max-width:870px;padding:24px 12px 20px;margin:24px auto 22px;border:0;border-radius:0;background:transparent}
+.gift-button{display:flex;flex-direction:column;align-items:center;justify-content:center;width:min(100%,350px);padding:24px 25px 22px;border-radius:27px;border:2px solid #edcf9b;background:linear-gradient(145deg,#fffdf3,#ffe2f4 78%,#efe0ff);color:#48237e;box-shadow:0 9px 0 #dfc7ed,0 15px 28px #49316c18;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease}
+.gift-button:hover{transform:translateY(-5px) rotate(-1deg);box-shadow:0 12px 0 #dfc7ed,0 20px 28px #49316c21}
+.gift-button:active{transform:translateY(2px);box-shadow:0 3px 0 #dfc7ed}
+.gift-button:focus-visible{outline:3px solid #8a52d1;outline-offset:5px}
+.gift-button:disabled{opacity:.7;cursor:wait;transform:none}
+.gift-icon{font-size:clamp(6.5rem,15vw,8rem);line-height:1.1;display:block;filter:drop-shadow(0 7px 4px #a981b44b)}
+.gift-name{font-family:"Baloo 2",system-ui,sans-serif;font-size:1.8rem;line-height:1.15;font-weight:800;margin-top:7px}
+.gift-tap{font-weight:900;font-size:.9rem;color:#8254af;margin-top:4px}
+.gift-contents{font-size:.82rem;color:#79648b;margin:18px 0 0;text-align:center;font-weight:800}
+.downloads .status{font-size:.79rem;color:#6a5387;margin:5px 0 0;text-align:center}
+@media(max-width:730px){
+.intro{padding:36px 14px 39px}
+.player{padding:15px;gap:11px}
+.player-top{gap:12px}
+.cover{width:76px;height:76px;max-width:none}
+.player-core h2{font-size:1.35rem}
+.player-core .sub{display:none}
+.audio{min-height:42px}
+.playlist{grid-template-columns:1fr}
+.track{padding:7px 10px}
+.track img{width:30px;height:30px}
+.track strong{font-size:.86rem}
+.lyrics-body{height:170px}
+.player-controls{align-items:flex-start}
+.section-heading{margin:23px auto 11px}
+.section-heading p{font-size:.78rem}
+.downloads{padding:24px 8px}
+.gift-button{width:min(100%,300px)}
+}
+@media print{.player,.downloads,.section-heading{display:none!important}}
 </style></head><body><header class="site-header"><a class="brand" href="./">✦ Super Duper Me</a><a class="back" href="./">← Music home</a></header>
 <section class="intro"><div class="intro-inner"><span class="gift-tag">✦ A gift for educators ✦</span>
 <h1>A little music.<br><span>A big gift.</span> 🎵</h1>
 <p class="lead">Three happy songs, made to share with kids at school.</p>
 <p class="gift-message">We wrote these songs about being yourself, moving with joy, and caring for friends. <strong>If they bring a smile to your school day, that’s our whole reward.</strong></p>
 <div class="assurances"><span>♪ Three happy songs</span><span>♪ Lyrics included</span><span>♪ Made for school days</span></div>
-<div class="hero-actions"><a href="#listen" class="btn">♫ Listen to the songs</a><a href="#downloads" class="btn secondary">↓ Get the school pack</a></div>
+<div class="hero-actions"><a href="#listen" class="btn">♫ Listen to the songs</a></div>
 </div></section>
-<main><section class="play-area" id="listen"><div class="section-heading"><div><div class="section-kicker">Listen · Sing · Smile</div><h2>Your classroom jukebox</h2></div><p>Choose a song, press play, and follow the lyrics. The next song plays automatically.</p></div>
-<section class="player" aria-label="School music player"><div><img id="cover" class="cover" src="assets/super-duper-me.svg" alt="Super Duper Me cover"><div class="track-meta"><p class="eyebrow">Now playing <span id="counter">1 / 3</span></p><h2 id="title">Super Duper Me</h2><p class="sub" id="description">Confidence, energy and being yourself.</p></div><audio id="audio" class="audio" controls preload="metadata" src="audio/Super-Duper-Me.mp3">Your browser does not support audio playback.</audio><div class="controls"><button type="button" class="btn secondary" id="prev" aria-label="Previous song">⏮ Previous</button><button type="button" class="btn secondary" id="next" aria-label="Next song">Next ⏭</button><label class="hint"><input id="repeat" type="checkbox" checked> Repeat playlist</label></div><p class="hint" role="status" id="playback-status">Press play to start. Songs advance automatically.</p></div><div><div class="lyrics-panel"><div class="lyrics-head"><strong>🎤 Follow the lyrics</strong><a id="full-lyrics" href="lyrics.html#super-duper-me">Full lyrics ↗</a></div><div class="lyrics-body" id="lyrics" tabindex="0" aria-label="Lyrics for the selected song"></div></div><p class="hint">Lyrics change with each song. Scroll at your own pace.</p><div class="controls"><a class="btn" id="download-track" href="audio/Super-Duper-Me.mp3" download>↓ Download this MP3</a><button type="button" class="btn secondary" id="download-lyrics">↓ Download lyrics (.txt)</button></div></div></section><div class="playlist" id="playlist" aria-label="Choose a song"></div></section><section class="downloads" id="downloads"><div><div class="section-kicker">Take the music with you</div><h2>Download the school pack 🎁</h2><p>All three MP3s, printable lyrics and a short permission note, together in one ZIP file.</p></div><div class="download-list"><button class="btn" id="download-all" type="button">↓ Download the gift pack</button><a class="btn quiet" href="lyrics.html">📖 Read &amp; print lyrics</a></div><p class="status" id="download-status" role="status" aria-live="polite">Ready when you are.</p></section><section class="panel" id="license" aria-labelledby="license-title">
+<main><section class="play-area" id="listen">
+<div class="section-heading"><h2>Listen &amp; sing along 🎶</h2><p>Choose a song and enjoy. The next one plays automatically.</p></div>
+<section class="player" aria-label="School music player">
+ <div class="player-top">
+  <img id="cover" class="cover" src="assets/super-duper-me.svg" alt="Super Duper Me cover">
+  <div class="player-core">
+   <p class="eyebrow">NOW PLAYING <span id="counter">1 / 3</span></p>
+   <h2 id="title">Super Duper Me</h2>
+   <p class="sub" id="description">Confidence, energy and being yourself.</p>
+   <audio id="audio" class="audio" controls preload="metadata" src="audio/Super-Duper-Me.mp3">Your browser does not support audio playback.</audio>
+  </div>
+ </div>
+ <div class="playlist" id="playlist" aria-label="Choose a song"></div>
+ <div class="player-controls">
+  <div class="controls"><button type="button" class="btn secondary" id="prev" aria-label="Previous song">⏮ Previous</button><button type="button" class="btn secondary" id="next" aria-label="Next song">Next ⏭</button><label class="hint"><input id="repeat" type="checkbox" checked> Repeat playlist</label></div>
+  <p class="hint" role="status" id="playback-status">Press play to start.</p>
+ </div>
+ <div class="lyrics-panel">
+  <div class="lyrics-head"><strong>🎤 Lyrics</strong><a id="full-lyrics" href="lyrics.html#super-duper-me">Full lyrics ↗</a></div>
+  <div class="lyrics-body" id="lyrics" tabindex="0" aria-label="Lyrics for the selected song"></div>
+ </div>
+ <div class="lyrics-actions"><a class="text-link" id="download-track" href="audio/Super-Duper-Me.mp3" download>↓ This MP3</a><button type="button" class="text-link" id="download-lyrics">↓ Lyrics (.txt)</button></div>
+</section></section><section class="downloads" id="downloads" aria-label="Download the school music gift pack">
+<button type="button" class="gift-button" id="download-all" aria-label="Download free School Gift Pack ZIP with three songs, lyrics and permission note">
+<span class="gift-icon" aria-hidden="true">🎁</span>
+<span class="gift-name">School Gift Pack</span>
+<span class="gift-tap">Click the gift to download</span>
+</button>
+<p class="gift-contents">3 songs · Lyrics · Free-use note</p>
+<p class="status" id="download-status" role="status" aria-live="polite"></p>
+</section><section class="panel" id="license" aria-labelledby="license-title">
 <div class="print-row"><div><h2 id="license-title">Free for schools. Forever. 💛</h2></div><button type="button" class="btn quiet print-button" onclick="window.print()">🖨 Print</button></div>
 <p>Schools and educators worldwide may <strong>play, download, copy, share, perform and use these songs and lyrics in school videos</strong> for any non-commercial school purpose, free forever. <strong>No fee, registration, credit, promotion or request needed—now or later.</strong> We won't revoke this gift, bill you or pursue copyright claims against your school for such use. Please don't sell the songs or use them in commercial advertising.</p>
 <p class="legal-note">This promise covers the rights we control. Video platforms may still show automated notices; follow your school's student privacy rules.</p>
@@ -34,7 +130,7 @@ footer{text-align:center;padding:21px;color:#796b8e;font-size:.86rem}
 const songs=[{"slug":"super-duper-me","title":"Super Duper Me","lyrics":"Hey, hey!\nAre you ready?\nOne, two, three!\nLet's go!\n\nLove you every day\nMake me feel pretty\nMake, make, make me feel\nSuper duper!\nDancing in my room\nSinging something silly\nLook into the mirror\nHey, that's me!\n\nLittle stars up in the sky\nI can spread my wings and fly\nI don't have to be like you\nI just wanna be me too!\n\nI'm super, super, super me!\nHappy as a girl can be!\nJump up high, touch the sky\nWatch me sparkle, watch me shine!\nI'm super, super, super me!\nI can be whatever I dream!\nBig bright smile, wild and free\nNobody else can be like me!\nOh-oh-oh, super duper!\nOh-oh-oh, super me!\n\nWhen I was younger\nIn my little stroller\nDreaming of the big wide world\nGetting bigger, getting bolder!\nNow I've got my dancing shoes\nGot my favorite things to do\nSometimes I win, sometimes I fall\nI get back up and stand up tall!\n\nIf I make a little mistake\nThat's okay, I'll take a break\nEvery day I learn and grow\nThere's so much more I wanna know!\n\nI'm super, super, super me!\nHappy as a girl can be!\nJump up high, touch the sky\nWatch me sparkle, watch me shine!\nI'm super, super, super me!\nI can be whatever I dream!\nBig bright smile, wild and free\nNobody else can be like me!\n\nPut on that glitter!\nOn the stage!\nWait a minute\nI'm the star of my own day!\nMessy hair? Don't care!\nDifferent shoes? So what!\nI like being me!\nAnd I like me a lot!\n\nSome days I feel a little shy\nSome days I just wanna cry\nThat's okay, it's part of me\nI can be who I wanna be\nTake my hand, let's sing along\nEvery little heart belongs\nYou are you, and I am me\nWe're all special, can't you see?\n\nI'm super, super, super me!\nHappy as a girl can be!\nJump up high, touch the sky\nWatch me sparkle, watch me shine!\nI'm super, super, super me!\nI can be whatever I dream!\nBig bright smile, wild and free\nNobody else can be like me!\n\nLove me every day!\nMake, make, make me feel\nSuper duper!\nHey, that's me!\nAnd I love being me!\nSuper duper me!","file":"Super-Duper-Me.mp3","image":"super-duper-me.svg"},{"slug":"shake-your-shoes","title":"Shake Your Shoes","lyrics":"Tap tap wiggle wiggle stomp stomp jiggle jiggle\nOops\nOops my shoes can dance\nAll of my sneakers by the door\nAnd now they're sliding on the floor\nOne goes left, one goes right\nDancing in the kitchen light\nOne does ballet, one does jazz\nWhere'd they learn to move like that?\nI try to catch them, whoops, too slow\nThere goes my shoe, oh no, no, no\n\nShoe, shoe, shake your shoes\nLet's do the dance you wanna do\nWiggle left, wiggle right\nJump like popcorn out of sight\nTap, tap, stomp, stomp, go\nEverybody touch your toes\nShoe, shoe, shake your shoes\nMy silly shoes have got the moves\n\nMy left shoe jumped onto a chair\nMy right shoe flew into the air\nOne went dancing down the hall\nThen did a backflip off the wall\nMom walked in and said&quot;What's that?&quot;\nA sneaker dancing with the cat\nI said&quot;Mom, it's not my fault\nMy shoes are doing somersaults&quot;\n\nShoe, shoe, shake your shoes\nLet's do the dance you wanna do\nWiggle left, wiggle right\nJump like popcorn out of sight\nTap, tap, stomp, stomp, go\nEverybody touch your toes\nShoe, shoe, shake your shoes\nMy silly shoes have got the moves\n\nHey, where's your left shoe?\nI don't know\nWhere's your right shoe?\nWatch it go\nCan you make them stop?\nNo way\nThey just wanna dance all day\nTap, tap, wiggle, wiggle, stomp, stomp, jiggle, jiggle\nLeft shoe, right shoe, everybody dance\nWait, where are my socks?","file":"Shake-Your-Shoes.mp3","image":"shake-your-shoes.svg"},{"slug":"friends-make-the-world-shine","title":"Friends Make the World Shine","lyrics":"Hey, hey! Are you ready\nWhat makes the world a brighter place\nA little kindness\nAnd a lot of friendship\nOne, two, three, let's shine\n\nWhen I laugh, you laugh with me\nWhen I fall, you help me see\nWhen the clouds are turning gray\nYou bring sunshine to my day\nWe can dance, we can play\nChase the rainbows far away\nHand in hand, we'll be all right\nTogether we can shine so bright\n\nYou have a light, I have a light\nEvery little star can shine\nRise, rise, up so high\nFriendship makes us touch the sky\n\nShine, shine, shine with me\nBest friends forever, you and me\nPride, pride, pride, hooray\nWe lift each other up every day\nLove, love, love, let's share\nA little kindness everywhere\nIt's all right\nIt's all right\nFriends make the whole world bright\n\nPride, pride, pride, pride\nSide by side, side by side\nLa-la-la, la-la-light\nWe make the world shine bright\n\nSome kids need a helping hand\nSome need someone to understand\nSome need food, some need care\nWe can show them love is there\nIf you want to, you can share\nLittle things can show you care\nEvery person, big or small\nDeserves some kindness, one and all\n\nYou have a light\nI have a light\nWe can make the world so bright\nRise, rise, up so high\nFriendship makes us touch the sky\n\nShine, shine, shine with me\nBest friends forever, you and me\nPride, pride, pride, hooray\nWe lift each other up every day\nLove, love, love, let's share\nA little kindness everywhere\nIt's all right\nIt's all right\nFriends make the whole world bright\n\nWhat if you're sad\nI'll stay with you\nWhat if I'm scared\nI'll help you through\nLa-la-la, let's sing along\nEvery friend belongs in our song\n\nShine, shine, shine with me\nOne big world, one family\nPride, pride, pride, hooray\nLet's make someone smile today\nLove, love, love, let's share\nSpread a little joy everywhere\nIt's all right\nIt's all right\nFriends make the whole world bright\n\nThank you, Earth, for skies so blue\nFor every friend, and me and you\nLa-la-la, our hearts shine bright\nFriendship is our little light","file":"Friends-Make-the-World-Shine.mp3","image":"friends-make-the-world-shine.svg"}];
 const descriptions=['Confidence, energy and being yourself.','Happy feet and active movement breaks.','Friendship, kindness and togetherness.'];let index=0;const audio=document.getElementById('audio'),lyrics=document.getElementById('lyrics'),playlist=document.getElementById('playlist'),status=document.getElementById('playback-status');
 songs.forEach((s,i)=>{const b=document.createElement('button');b.type='button';b.className='track';b.innerHTML='<img alt="" src="assets/'+s.image+'"><span><strong></strong><small>Track '+(i+1)+' · Select to play</small></span>';b.querySelector('strong').textContent=s.title;b.addEventListener('click',()=>select(i,true));playlist.appendChild(b)});
-function select(i,play){index=(i+songs.length)%songs.length;const s=songs[index];audio.src='audio/'+s.file;document.getElementById('cover').src='assets/'+s.image;document.getElementById('cover').alt=s.title+' cover';document.getElementById('title').textContent=s.title;document.getElementById('counter').textContent=(index+1)+' / '+songs.length;document.getElementById('description').textContent=descriptions[index];lyrics.textContent=s.lyrics;lyrics.scrollTop=0;document.getElementById('full-lyrics').href='lyrics.html#'+s.slug;document.getElementById('download-track').href='audio/'+s.file;[...playlist.children].forEach((b,j)=>{b.setAttribute('aria-current',j===index?'true':'false');b.querySelector('small').textContent=j===index?'Selected · Track '+(j+1):'Track '+(j+1)+' · Select to play'});status.textContent='Selected: '+s.title;if(play)audio.play().catch(()=>{status.textContent='Tap play in the audio player to start.'})}
+function select(i,play){index=(i+songs.length)%songs.length;const s=songs[index];audio.src='audio/'+s.file;document.getElementById('cover').src='assets/'+s.image;document.getElementById('cover').alt=s.title+' cover';document.getElementById('title').textContent=s.title;document.getElementById('counter').textContent=(index+1)+' / '+songs.length;document.getElementById('description').textContent=descriptions[index];lyrics.textContent=s.lyrics;lyrics.scrollTop=0;document.getElementById('full-lyrics').href='lyrics.html#'+s.slug;document.getElementById('download-track').href='audio/'+s.file;[...playlist.children].forEach((b,j)=>{b.setAttribute('aria-current',j===index?'true':'false');b.querySelector('small').textContent=j===index?'Now selected':'Tap to play'});status.textContent='Selected: '+s.title;if(play)audio.play().catch(()=>{status.textContent='Tap play in the audio player to start.'})}
 document.getElementById('prev').addEventListener('click',()=>select(index-1,true));document.getElementById('next').addEventListener('click',()=>select(index+1,true));audio.addEventListener('ended',()=>{if(index<songs.length-1)select(index+1,true);else if(document.getElementById('repeat').checked)select(0,true);else status.textContent='Playlist finished.'});audio.addEventListener('error',()=>status.textContent='Audio could not load. Please try downloading the MP3.');document.getElementById('download-lyrics').addEventListener('click',()=>{const s=songs[index],blob=new Blob([s.title+'\n\n'+s.lyrics+'\n'],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=s.slug+'-lyrics.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});
 document.getElementById('download-all').addEventListener('click',async function(){const button=this,st=document.getElementById('download-status');if(!window.JSZip){st.textContent='ZIP library unavailable. Please download individual songs.';return}button.disabled=true;st.textContent='Preparing three MP3 files…';try{const zip=new JSZip();for(const s of songs){const r=await fetch('audio/'+s.file);if(!r.ok)throw Error('Missing audio: '+s.file);zip.file(s.file,await r.blob());zip.file(s.slug+'-lyrics.txt',s.title+'\n\n'+s.lyrics+'\n')}const permission=document.getElementById('license').cloneNode(true);permission.querySelectorAll('button').forEach(b=>b.remove());zip.file('Free-School-Use-Permission.txt',permission.textContent.trim()+'\n');const blob=await zip.generateAsync({type:'blob',compression:'STORE'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='Super-Duper-Me-School-Pack.zip';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);st.textContent='ZIP download started.'}catch(e){st.textContent='Could not make ZIP. Please use the individual MP3 download buttons.'}finally{button.disabled=false}});
 select(0,false);
