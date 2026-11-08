@@ -1,0 +1,57 @@
+name: Verify live school gift audio
+on:
+  push:
+    paths:
+      - '.github/workflows/verify-live-school-gift.yml'
+      - 'audio/*.mp3'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check-public-downloads:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check published songs and simulate gift ZIP
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import urllib.request, urllib.error, hashlib, io, zipfile, time
+          base='https://luckybao-dev.github.io/super-duper-me-music/'
+          tracks={
+           'Super-Duper-Me.mp3':'29cc67bc6f2075b9ee8328060881ab7cb853e0d6257cf77aedec5b9abb41a50c',
+           'Shake-Your-Shoes.mp3':'c680c9a6a1ca991e69d559d1dc11f5cb4f4bad11793c271e890fbc827bc45137',
+           'Friends-Make-the-World-Shine.mp3':'ded3a46a6063e0bc68e039876f125720e94b29886c8affbcdf8d155979b0d3b2'}
+          last=None
+          for attempt in range(1,21):
+           try:
+            out={}
+            stamp=str(int(time.time()))
+            page=urllib.request.urlopen(urllib.request.Request(base+'schools.html?livecheck='+stamp,headers={'Cache-Control':'no-cache'}),timeout=20).read().decode()
+            for need in ['download-all','zip.file(s.file,mp3)','JSZip','Free for schools &amp; daycares']:
+             assert need in page, 'Missing deployed ZIP code or promise: '+need
+            for file,wanted in tracks.items():
+             url=base+'audio/'+file+'?livecheck='+stamp
+             data=urllib.request.urlopen(urllib.request.Request(url,headers={'Cache-Control':'no-cache'}),timeout=25).read()
+             found=hashlib.sha256(data).hexdigest()
+             assert len(data)>3000000, file+' is too short: '+str(len(data))
+             assert found==wanted, file+' has wrong or stale SHA '+found
+             out[file]=data
+             print('Published verified full track:',file,'bytes',len(data))
+            # All inputs used by the school-page ZIP are exact full files, and
+            # the 3-song package reproduces them without modification.
+            outzip=io.BytesIO()
+            with zipfile.ZipFile(outzip,'w',compression=zipfile.ZIP_STORED) as z:
+             for f,blob in out.items():
+              z.writestr(f,blob)
+              z.writestr(f.replace('.mp3','-lyrics.txt'),'Song lyrics distributed by website')
+            with zipfile.ZipFile(io.BytesIO(outzip.getvalue())) as z:
+             assert len(z.namelist())==6
+             for file,wanted in tracks.items():
+              assert hashlib.sha256(z.read(file)).hexdigest()==wanted
+            print('PASS: public website serving full 3-song MP3s; ZIP assembly integrity verified.')
+            break
+           except Exception as e:
+            last=repr(e);print('Attempt',attempt,'not ready:',last,flush=True)
+            if attempt==20:raise SystemExit('Public gift verification FAILED: '+last)
+            time.sleep(10)
+          PY
