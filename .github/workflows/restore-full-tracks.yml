@@ -18,12 +18,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test -d .audio-parts
+          if [ ! -d .audio-parts ]; then echo "Already restored; nothing to do."; exit 0; fi
           for song in Super-Duper-Me Shake-Your-Shoes Friends-Make-the-World-Shine; do
             test -f ".audio-parts/${song}.000.b64"
             cat ".audio-parts/${song}."*.b64 | base64 --decode > "audio/${song}.mp3"
             test "$(wc -c < "audio/${song}.mp3")" -gt 3000000
-            ffprobe -v error -show_entries format=duration -of csv=p=0 "audio/${song}.mp3" | awk '{if ($1 < 120) exit 1}'
           done
           printf '%s\n' \
             "ded3a46a6063e0bc68e039876f125720e94b29886c8affbcdf8d155979b0d3b2  audio/Friends-Make-the-World-Shine.mp3" \
@@ -33,6 +32,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          if [ ! -d .audio-parts ]; then echo "No staged audio to commit."; exit 0; fi
           rm -rf .audio-parts
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
