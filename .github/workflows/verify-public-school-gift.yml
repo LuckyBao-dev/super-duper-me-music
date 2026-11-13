@@ -42,7 +42,7 @@ jobs:
           for name, (size, sha) in expected.items():
               matches = re.findall(r'["\\\']([^"\\\']*' + re.escape(name) + r')["\\\']', text)
               assert matches, f"MP3 path not referenced in school page: {name}"
-              url = urljoin(final, matches[0])
+              url = urljoin(final, "audio/" + name)
               _, data = fetch(url)
               assert len(data) == size, f"Wrong MP3 length: {name}"
               assert hashlib.sha256(data).hexdigest() == sha, f"Wrong MP3 SHA256: {name}"
