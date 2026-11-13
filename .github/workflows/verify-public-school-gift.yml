@@ -1,5 +1,8 @@
 name: Verify public school gift HTTPS and audio
 on:
+  push:
+    paths:
+      - '.github/workflows/verify-public-school-gift.yml'
   workflow_dispatch:
   schedule:
     - cron: '0 14 * * 1-5'
